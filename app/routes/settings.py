@@ -38,12 +38,12 @@ async def settings(request: Request):
     config = load_config()
 
     return templates.TemplateResponse(
-        "settings.html",
-        {
-            "request": request,
+        request=request,
+        name="config.html",
+        context={
             "config": config
-        }
-    )
+    }
+)
 
 # =========================================================
 # SAVE SETTINGS

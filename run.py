@@ -1,7 +1,6 @@
 # run.py
 
 import os
-
 import uvicorn
 
 from dotenv import load_dotenv
@@ -26,10 +25,12 @@ PORT = int(
     )
 )
 
-DEBUG = os.getenv(
-    "DEBUG",
-    "true"
-).lower() == "true"
+ENVIRONMENT = os.getenv(
+    "ENVIRONMENT",
+    "development"
+)
+
+DEBUG = ENVIRONMENT == "development"
 
 # =========================================================
 # START
