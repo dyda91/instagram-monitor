@@ -7,17 +7,11 @@
 
     <meta charset="UTF-8">
 
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Instagram Monitor</title>
 
-    <link
-        rel="stylesheet"
-        href="/static/style.css"
-    >
+    <link rel="stylesheet" href="/static/style.css">
 
 </head>
 
@@ -25,9 +19,7 @@
 
     <div class="container">
 
-        <!-- ========================================= -->
         <!-- HEADER -->
-        <!-- ========================================= -->
         <div class="header">
 
             <div>
@@ -38,54 +30,43 @@
 
                 <p class="subtitle">
                     Monitorando:
-                    @{{ config.instagram_user }}
+                    @{{ config.instagram_user or "não definido" }}
                 </p>
 
             </div>
 
-            <a
-                href="/settings"
-                class="button"
-            >
+            <a href="/settings" class="button">
                 Configurações
             </a>
 
         </div>
 
-        <!-- ========================================= -->
         <!-- STATS -->
-        <!-- ========================================= -->
         <div class="stats-grid">
 
             <div class="stat-card">
 
-                <div class="stat-label">
-                    POSTS
-                </div>
+                <div class="stat-label">POSTS</div>
 
                 <div class="stat-value">
-                    {{ posts|length }}
+                    {{ posts|default([])|length }}
                 </div>
 
             </div>
 
             <div class="stat-card">
 
-                <div class="stat-label">
-                    INTERVALO
-                </div>
+                <div class="stat-label">INTERVALO</div>
 
                 <div class="stat-value">
-                    {{ config.tempo_minutos }} min
+                    {{ config.tempo_minutos or 0 }} min
                 </div>
 
             </div>
 
             <div class="stat-card">
 
-                <div class="stat-label">
-                    ÚLTIMA VERIFICAÇÃO
-                </div>
+                <div class="stat-label">ÚLTIMA VERIFICAÇÃO</div>
 
                 <div class="stat-value small">
                     -
@@ -95,12 +76,10 @@
 
         </div>
 
-        <!-- ========================================= -->
         <!-- POSTS -->
-        <!-- ========================================= -->
         <div class="cards-grid">
 
-            {% for post in posts %}
+            {% for post in posts|default([]) %}
 
             <div class="card">
 
@@ -154,10 +133,7 @@
 
                         <span>Post</span>
 
-                        <a
-                            href="{{ post.link }}"
-                            target="_blank"
-                        >
+                        <a href="{{ post.link }}" target="_blank">
                             Abrir
                         </a>
 

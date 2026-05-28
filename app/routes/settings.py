@@ -39,7 +39,7 @@ async def settings(request: Request):
 
     return templates.TemplateResponse(
         request=request,
-        name="config.html",
+        name="settings.html",
         context={
             "config": config
         }

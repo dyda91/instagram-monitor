@@ -31,19 +31,15 @@ templates = Jinja2Templates(
 async def dashboard(request: Request):
 
     monitor_data = get_monitor_data()
-
     config = load_config()
 
     return templates.TemplateResponse(
         request=request,
         name="dashboard.html",
         context={
-            "request": request,
-
             "posts": monitor_data.get("posts", []),
-
             "logs": monitor_data.get("logs", []),
-
-            "config": config
+            "config": config,
+            "last_check": monitor_data.get("last_check", "N/A")
         }
     )
