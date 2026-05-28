@@ -38,7 +38,7 @@
 
                 <p class="subtitle">
                     Monitorando:
-                    @{{ data.config.instagram_user }}
+                    @{{ config.instagram_user }}
                 </p>
 
             </div>
@@ -64,7 +64,7 @@
                 </div>
 
                 <div class="stat-value">
-                    {{ data.posts|length }}
+                    {{ posts|length }}
                 </div>
 
             </div>
@@ -76,7 +76,7 @@
                 </div>
 
                 <div class="stat-value">
-                    {{ data.config.tempo_minutos }} min
+                    {{ config.tempo_minutos }} min
                 </div>
 
             </div>
@@ -88,7 +88,7 @@
                 </div>
 
                 <div class="stat-value small">
-                    {{ data.last_check }}
+                    -
                 </div>
 
             </div>
@@ -100,7 +100,7 @@
         <!-- ========================================= -->
         <div class="cards-grid">
 
-            {% for post in data.posts %}
+            {% for post in posts %}
 
             <div class="card">
 
