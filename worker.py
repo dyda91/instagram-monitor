@@ -4,6 +4,7 @@ import time
 from app.config_manager import load_config
 from app.monitor import run_monitor
 
+
 def main():
 
     print("[WORKER] Monitor iniciado")
@@ -21,6 +22,9 @@ def main():
 
         except Exception as e:
             print("[WORKER ERROR]", e)
+
+            # fallback pra não travar loop
+            tempo_minutos = 15
 
         time.sleep(tempo_minutos * 60)
 
