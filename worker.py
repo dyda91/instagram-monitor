@@ -1,13 +1,14 @@
-# worker.py
-
 import time
 from app.config_manager import load_config
-from app.monitor import run_monitor
+from app.monitor import start_monitor
 
 
 def main():
 
     print("[WORKER] Monitor iniciado")
+
+    # inicia thread do monitor UMA VEZ
+    start_monitor()
 
     while True:
 
@@ -16,14 +17,10 @@ def main():
 
             tempo_minutos = config.get("tempo_minutos", 15)
 
-            print(f"[WORKER] Executando monitor... (a cada {tempo_minutos} min)")
-
-            run_monitor()
+            print(f"[WORKER] rodando... (heartbeat a cada {tempo_minutos} min)")
 
         except Exception as e:
             print("[WORKER ERROR]", e)
-
-            # fallback pra não travar loop
             tempo_minutos = 15
 
         time.sleep(tempo_minutos * 60)
