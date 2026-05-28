@@ -38,8 +38,12 @@ async def dashboard(request: Request):
         request=request,
         name="dashboard.html",
         context={
-            "posts": monitor_data["posts"],
-            "logs": monitor_data["logs"],
+            "request": request,
+
+            "posts": monitor_data.get("posts", []),
+
+            "logs": monitor_data.get("logs", []),
+
             "config": config
         }
     )
