@@ -1,5 +1,7 @@
 # app/routes/settings.py
 
+from pathlib import Path
+
 from fastapi import APIRouter
 from fastapi import Request
 from fastapi import Form
@@ -21,8 +23,6 @@ router = APIRouter()
 # =========================================================
 # TEMPLATES
 # =========================================================
-from pathlib import Path
-
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 templates = Jinja2Templates(
@@ -42,8 +42,8 @@ async def settings(request: Request):
         name="config.html",
         context={
             "config": config
-    }
-)
+        }
+    )
 
 # =========================================================
 # SAVE SETTINGS
@@ -75,7 +75,6 @@ async def save_settings(
     # INSTAGRAM
     # =====================================================
     config["instagram_user"] = instagram_user
-
     config["instagram_user_id"] = instagram_user_id
 
     # =====================================================
@@ -87,21 +86,18 @@ async def save_settings(
     # SMM
     # =====================================================
     config["smm_api_url"] = smm_api_url
-
     config["smm_api_key"] = smm_api_key
 
     # =====================================================
     # POSTS
     # =====================================================
     config["service_post"] = service_post
-
     config["quantity_post"] = quantity_post
 
     # =====================================================
     # ACCOUNT
     # =====================================================
     config["service_account"] = service_account
-
     config["quantity_account"] = quantity_account
 
     # =====================================================
