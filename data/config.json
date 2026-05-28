@@ -1,0 +1,14 @@
+{
+    "instagram_user": "esteyfe_kerolem",
+    "instagram_user_id": "1907093366",
+    "rapidapi_url": "https://instagram-api-fast-reliable-public-data-scraper.p.rapidapi.com/feed",
+    "rapidapi_host": "instagram-api-fast-reliable-public-data-scraper.p.rapidapi.com",
+    "rapidapi_key": "6ebb71c2dcmsh4007ed70e92ac66p1a4b38jsnb16c8ef66b5c",
+    "tempo_minutos": 15,
+    "smm_api_url": "https://smmoficial.com/api/v2",
+    "smm_api_key": "910190c246f08415d42fef38da6aa2db",
+    "service_post": "1003",
+    "quantity_post": "1000",
+    "service_account": "1034",
+    "quantity_account": "300"
+}

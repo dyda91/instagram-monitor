@@ -1,0 +1,250 @@
+<!-- app/templates/settings.html -->
+
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Configurações</title>
+
+    <link
+        rel="stylesheet"
+        href="/static/style.css"
+    >
+
+</head>
+
+<body>
+
+    <div class="container-small">
+
+        <div class="settings-card">
+
+            <div class="settings-header">
+
+                <h1>
+                    Configurações
+                </h1>
+
+                <a
+                    href="/"
+                    class="button"
+                >
+                    Dashboard
+                </a>
+
+            </div>
+
+            <form
+                method="POST"
+                action="/settings"
+            >
+
+                <!-- ===================================== -->
+                <!-- INSTAGRAM -->
+                <!-- ===================================== -->
+                <div class="section-title">
+                    Instagram
+                </div>
+
+                <div class="field">
+
+                    <label>
+                        Instagram User
+                    </label>
+
+                    <input
+                        type="text"
+                        name="instagram_user"
+                        value="{{ config.instagram_user }}"
+                    >
+
+                </div>
+
+                <div class="field">
+
+                    <label>
+                        Instagram User ID
+                    </label>
+
+                    <input
+                        type="text"
+                        name="instagram_user_id"
+                        value="{{ config.instagram_user_id }}"
+                    >
+
+                </div>
+
+                <!-- ===================================== -->
+                <!-- RAPIDAPI -->
+                <!-- ===================================== -->
+                <div class="section-title">
+                    RapidAPI
+                </div>
+
+                <div class="field">
+
+                    <label>
+                        RapidAPI Key
+                    </label>
+
+                    <input
+                        type="text"
+                        name="rapidapi_key"
+                        value="{{ config.rapidapi_key }}"
+                    >
+
+                </div>
+
+                <!-- ===================================== -->
+                <!-- SMM -->
+                <!-- ===================================== -->
+                <div class="section-title">
+                    SMM
+                </div>
+
+                <div class="field">
+
+                    <label>
+                        SMM API URL
+                    </label>
+
+                    <input
+                        type="text"
+                        name="smm_api_url"
+                        value="{{ config.smm_api_url }}"
+                    >
+
+                </div>
+
+                <div class="field">
+
+                    <label>
+                        SMM API KEY
+                    </label>
+
+                    <input
+                        type="text"
+                        name="smm_api_key"
+                        value="{{ config.smm_api_key }}"
+                    >
+
+                </div>
+
+                <!-- ===================================== -->
+                <!-- POST SERVICE -->
+                <!-- ===================================== -->
+                <div class="section-title">
+                    Serviço Posts
+                </div>
+
+                <div class="field">
+
+                    <label>
+                        Service Post
+                    </label>
+
+                    <input
+                        type="text"
+                        name="service_post"
+                        value="{{ config.service_post }}"
+                    >
+
+                </div>
+
+                <div class="field">
+
+                    <label>
+                        Quantity Post
+                    </label>
+
+                    <input
+                        type="text"
+                        name="quantity_post"
+                        value="{{ config.quantity_post }}"
+                    >
+
+                </div>
+
+                <!-- ===================================== -->
+                <!-- ACCOUNT SERVICE -->
+                <!-- ===================================== -->
+                <div class="section-title">
+                    Serviço Conta
+                </div>
+
+                <div class="field">
+
+                    <label>
+                        Service Account
+                    </label>
+
+                    <input
+                        type="text"
+                        name="service_account"
+                        value="{{ config.service_account }}"
+                    >
+
+                </div>
+
+                <div class="field">
+
+                    <label>
+                        Quantity Account
+                    </label>
+
+                    <input
+                        type="text"
+                        name="quantity_account"
+                        value="{{ config.quantity_account }}"
+                    >
+
+                </div>
+
+                <!-- ===================================== -->
+                <!-- MONITOR -->
+                <!-- ===================================== -->
+                <div class="section-title">
+                    Monitor
+                </div>
+
+                <div class="field">
+
+                    <label>
+                        Tempo Monitor (minutos)
+                    </label>
+
+                    <input
+                        type="number"
+                        name="tempo_minutos"
+                        value="{{ config.tempo_minutos }}"
+                    >
+
+                </div>
+
+                <!-- ===================================== -->
+                <!-- SUBMIT -->
+                <!-- ===================================== -->
+                <button
+                    type="submit"
+                    class="submit-button"
+                >
+                    Salvar Configurações
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</body>
+
+</html>

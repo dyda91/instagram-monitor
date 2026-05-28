@@ -1,0 +1,178 @@
+<!-- app/templates/dashboard.html -->
+
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Instagram Monitor</title>
+
+    <link
+        rel="stylesheet"
+        href="/static/style.css"
+    >
+
+</head>
+
+<body>
+
+    <div class="container">
+
+        <!-- ========================================= -->
+        <!-- HEADER -->
+        <!-- ========================================= -->
+        <div class="header">
+
+            <div>
+
+                <h1 class="title-main">
+                    Instagram Monitor
+                </h1>
+
+                <p class="subtitle">
+                    Monitorando:
+                    @{{ data.config.instagram_user }}
+                </p>
+
+            </div>
+
+            <a
+                href="/settings"
+                class="button"
+            >
+                Configurações
+            </a>
+
+        </div>
+
+        <!-- ========================================= -->
+        <!-- STATS -->
+        <!-- ========================================= -->
+        <div class="stats-grid">
+
+            <div class="stat-card">
+
+                <div class="stat-label">
+                    POSTS
+                </div>
+
+                <div class="stat-value">
+                    {{ data.posts|length }}
+                </div>
+
+            </div>
+
+            <div class="stat-card">
+
+                <div class="stat-label">
+                    INTERVALO
+                </div>
+
+                <div class="stat-value">
+                    {{ data.config.tempo_minutos }} min
+                </div>
+
+            </div>
+
+            <div class="stat-card">
+
+                <div class="stat-label">
+                    ÚLTIMA VERIFICAÇÃO
+                </div>
+
+                <div class="stat-value small">
+                    {{ data.last_check }}
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- ========================================= -->
+        <!-- POSTS -->
+        <!-- ========================================= -->
+        <div class="cards-grid">
+
+            {% for post in data.posts %}
+
+            <div class="card">
+
+                <div class="card-top">
+
+                    <div>
+
+                        <div class="post-code">
+                            {{ post.code }}
+                        </div>
+
+                        <div class="post-subtitle">
+                            Instagram Post
+                        </div>
+
+                    </div>
+
+                    {% if post.is_new %}
+
+                    <div class="badge badge-green">
+                        NOVO
+                    </div>
+
+                    {% endif %}
+
+                </div>
+
+                <div class="card-content">
+
+                    <div class="row">
+
+                        <span>Status SMM</span>
+
+                        {% if post.smm_sent %}
+
+                        <div class="badge badge-blue">
+                            ENVIADO
+                        </div>
+
+                        {% else %}
+
+                        <div class="badge badge-yellow">
+                            AGUARDANDO
+                        </div>
+
+                        {% endif %}
+
+                    </div>
+
+                    <div class="row">
+
+                        <span>Post</span>
+
+                        <a
+                            href="{{ post.link }}"
+                            target="_blank"
+                        >
+                            Abrir
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            {% endfor %}
+
+        </div>
+
+    </div>
+
+</body>
+
+</html>
