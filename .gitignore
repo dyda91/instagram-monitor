@@ -1,16 +1,17 @@
-# Python
+venv/
 __pycache__/
 *.pyc
-.venv/
 
-# Configs sensíveis
 .env
 
-# Logs
-*.log
+config.json
+cookies.json
+session.json
 
-# Sistema
-.DS_Store
+data/
+logs/
 
-# Dados locais
-app/data/*.json
+*.db
+
+.idea/
+.vscode/

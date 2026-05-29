@@ -7,30 +7,18 @@ from app.routes.api import router as api_router
 
 from app.monitor import start_monitor
 
-# =========================================================
-# APP
-# =========================================================
 app = FastAPI()
 
-# =========================================================
-# STATIC
-# =========================================================
+@app.on_event("startup")
+async def startup_event():
+    start_monitor()
+
 app.mount(
     "/static",
     StaticFiles(directory="app/static"),
     name="static"
 )
 
-# =========================================================
-# ROUTES
-# =========================================================
 app.include_router(dashboard_router)
-
 app.include_router(settings_router)
-
 app.include_router(api_router)
-
-# =========================================================
-# START MONITOR
-# =========================================================
-start_monitor()
