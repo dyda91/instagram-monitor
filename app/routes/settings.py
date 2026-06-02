@@ -2,6 +2,8 @@
 
 from pathlib import Path
 
+from typeguard import config
+
 from fastapi import APIRouter
 from fastapi import Request
 from fastapi import Form
@@ -62,6 +64,14 @@ async def save_settings(
     service_post: str = Form(...),
     quantity_post: str = Form(...),
 
+    enable_service_post_2: str | None = Form(None),
+    service_post_2: str = Form(""),
+    quantity_post_2: str = Form(""),
+
+    enable_service_post_3: str | None = Form(None),
+    service_post_3: str = Form(""),
+    quantity_post_3: str = Form(""),
+
     service_account: str = Form(...),
     quantity_account: str = Form(...),
 
@@ -93,6 +103,26 @@ async def save_settings(
     # =====================================================
     config["service_post"] = service_post
     config["quantity_post"] = quantity_post
+
+    # =====================================================
+# POST EXTRA 1
+# =====================================================
+    config["enable_service_post_2"] = (
+        enable_service_post_2 is not None
+    )
+
+    config["service_post_2"] = service_post_2
+    config["quantity_post_2"] = quantity_post_2
+
+# =====================================================
+# POST EXTRA 2
+# =====================================================
+    config["enable_service_post_3"] = (
+        enable_service_post_3 is not None
+    )
+
+    config["service_post_3"] = service_post_3
+    config["quantity_post_3"] = quantity_post_3
 
     # =====================================================
     # ACCOUNT

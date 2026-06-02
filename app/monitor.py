@@ -25,7 +25,6 @@ cache_codes = []
 # GET DATA
 # =========================================================
 def get_monitor_data():
-
     config = load_config()
 
     return {
@@ -38,13 +37,10 @@ def get_monitor_data():
 # LOOP PRINCIPAL
 # =========================================================
 def monitor_loop():
-
     global cache_codes
 
     while True:
-
         try:
-
             config = load_config()
 
             log("================================================")
@@ -59,29 +55,24 @@ def monitor_loop():
             )
 
             processed_posts = []
-
             found_new_post = False
 
+            # =================================================
+            # LOOP DE PROCESSAMENTO DOS POSTS
+            # =================================================
             for post in posts:
-
                 code = post["code"]
-
                 is_new = code not in cache_codes
-
                 smm_sent = False
 
                 # =============================================
-                # NOVO POST
+                # NOVO POST DETECTADO
                 # =============================================
                 if is_new:
-
                     found_new_post = True
-
                     log(f"[NOVO POST] {code}")
 
-                    # =========================================
-                    # ENVIO SMM POST
-                    # =========================================
+                    # SERVIÇO PRINCIPAL (POST 1)
                     response = send_smm_order(
                         api_url=config["smm_api_url"],
                         api_key=config["smm_api_key"],
@@ -89,8 +80,29 @@ def monitor_loop():
                         link=post["link"],
                         quantity=config["quantity_post"]
                     )
-
                     log(f"[SMM POST] {response}")
+
+                    # SERVIÇO EXTRA 1 (POST 2)
+                    if config.get("enable_service_post_2"):
+                        response = send_smm_order(
+                            api_url=config["smm_api_url"],
+                            api_key=config["smm_api_key"],
+                            service=config["service_post_2"],
+                            link=post["link"],
+                            quantity=config["quantity_post_2"]
+                        )
+                        log(f"[SMM POST 2] {response}")
+
+                    # SERVIÇO EXTRA 2 (POST 3)
+                    if config.get("enable_service_post_3"):
+                        response = send_smm_order(
+                            api_url=config["smm_api_url"],
+                            api_key=config["smm_api_key"],
+                            service=config["service_post_3"],
+                            link=post["link"],
+                            quantity=config["quantity_post_3"]
+                        )
+                        log(f"[SMM POST 3] {response}")
 
                     smm_sent = True
 
@@ -101,11 +113,10 @@ def monitor_loop():
                     "smm_sent": smm_sent
                 })
 
-            # =============================================
-            # ENVIO PERFIL
-            # =============================================
+            # =================================================
+            # FIM DO LOOP: PROCESSAMENTO DO PERFIL
+            # =================================================
             if found_new_post:
-
                 profile_link = (
                     f"https://www.instagram.com/"
                     f"{config['instagram_user']}/"
@@ -118,7 +129,6 @@ def monitor_loop():
                     link=profile_link,
                     quantity=config["quantity_account"]
                 )
-
                 log(f"[SMM PERFIL] {response}")
 
             # =============================================
@@ -141,34 +151,25 @@ def monitor_loop():
             )
 
         except Exception as e:
-
             log(f"[ERRO MONITOR] {e}")
 
         # =================================================
         # AGUARDA
         # =================================================
         config = load_config()
-
-        minutes = int(
-            config.get("tempo_minutos", 15)
-        )
-
+        minutes = int(config.get("tempo_minutos", 15))
         sleep_time = minutes * 60
 
         log(f"[SLEEP] {minutes} minutos")
-
         time.sleep(sleep_time)
 
 # =========================================================
 # START THREAD
 # =========================================================
 def start_monitor():
-
     thread = threading.Thread(
         target=monitor_loop,
         daemon=True
     )
-
     thread.start()
-
     log("[THREAD] Monitor iniciado")
