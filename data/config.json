@@ -2,14 +2,15 @@
     "instagram_user": "esteyfe_kerolem",
     "instagram_user_id": "1907093366",
 
+    "rapidapi_video_url": "https://instagram-downloader-download-instagram-stories-videos4.p.rapidapi.com/convert",
+    "rapidapi_video_host": "instagram-downloader-download-instagram-stories-videos4.p.rapidapi.com",
+
     "rapidapi_url": "https://instagram-api-fast-reliable-public-data-scraper.p.rapidapi.com/feed",
     "rapidapi_host": "instagram-api-fast-reliable-public-data-scraper.p.rapidapi.com",
-    "rapidapi_key": "6ebb71c2dcmsh4007ed70e92ac66p1a4b38jsnb16c8ef66b5c",
 
     "tempo_minutos": 15,
 
     "smm_api_url": "https://morethanpanel.com/api/v2",
-    "smm_api_key": "681d58482eb62994b474caba5eb9a937",
 
     "service_post": "2847",
     "quantity_post": "1000",
@@ -18,9 +19,13 @@
     "service_post_2": "5707",
     "quantity_post_2": "1000",
 
-    "enable_service_post_3": false,
-    "service_post_3": "",
-    "quantity_post_3": "",
+    "enable_service_post_3": true,
+    "service_post_3": "4641",
+    "quantity_post_3": "20",
+
+    "enable_service_post_4": true,
+    "service_post_4": "1963",
+    "quantity_post_4": "2000",
 
     "service_account": "1034",
     "quantity_account": "100"
